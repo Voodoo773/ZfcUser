@@ -99,20 +99,23 @@ class RedirectCallback
         if (!$useRedirect || !$routeExists) {
             $redirect = false;
         }
+        
+        $RouteMatch = $this->application->getMvcEvent()->getRouteMatch();
+        $lang = $RouteMatch->getParam('lang');
 
         switch ($currentRoute) {
             case 'zfcuser/register':
             case 'zfcuser/login':
             case 'zfcuser/authenticate':
                 $route = ($redirect) ?: $this->options->getLoginRedirectRoute();
-                return $this->router->assemble(array(), array('name' => $route));
+                return $this->router->assemble(array('lang' => $lang), array('name' => $route));
                 break;
             case 'zfcuser/logout':
                 $route = ($redirect) ?: $this->options->getLogoutRedirectRoute();
-                return $this->router->assemble(array(), array('name' => $route));
+                return $this->router->assemble(array('lang' => $lang), array('name' => $route));
                 break;
             default:
-                return $this->router->assemble(array(), array('name' => 'zfcuser'));
+                return $this->router->assemble(array('lang' => $lang), array('name' => 'zfcuser'));
         }
     }
 }
