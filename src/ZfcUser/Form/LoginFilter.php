@@ -12,7 +12,10 @@ class LoginFilter extends ProvidesEventsInputFilter
         $identityParams = array(
             'name'       => 'identity',
             'required'   => true,
-            'validators' => array()
+            'filters'    => array(
+                array('name' => 'Zend\Filter\StringToLower')
+            ),
+            'validators' => array(),
         );
 
         $identityFields = $options->getAuthIdentityFields();

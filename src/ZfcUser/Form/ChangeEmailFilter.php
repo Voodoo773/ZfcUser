@@ -30,6 +30,9 @@ class ChangeEmailFilter extends InputFilter
         $this->add(array(
             'name'       => 'newIdentity',
             'required'   => true,
+            'filters'    => array(
+                array('name' => 'Zend\Filter\StringToLower')
+            ),
             'validators' => array(
                 array(
                     'name' => 'EmailAddress'
@@ -41,6 +44,9 @@ class ChangeEmailFilter extends InputFilter
         $this->add(array(
             'name'       => 'newIdentityVerify',
             'required'   => true,
+            'filters'    => array(
+                array('name' => 'Zend\Filter\StringToLower')
+            ),
             'validators' => array(
                 array(
                     'name' => 'identical',

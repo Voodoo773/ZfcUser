@@ -42,6 +42,9 @@ class RegisterFilter extends ProvidesEventsInputFilter
         $this->add(array(
             'name'       => 'email',
             'required'   => true,
+            'filters'    => array(
+                array('name' => 'Zend\Filter\StringToLower')
+            ),
             'validators' => array(
                 array(
                     'name' => 'EmailAddress'
