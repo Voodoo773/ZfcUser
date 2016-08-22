@@ -138,7 +138,7 @@ class User extends EventProvider
             return false;
         }
 
-        $currentUser->setEmail($data['newIdentity']);
+        $currentUser->setEmail(strtolower($data['newIdentity']));
 
         $this->getEventManager()->trigger(__FUNCTION__, $this, array('user' => $currentUser, 'data' => $data));
         $this->getUserMapper()->update($currentUser);
