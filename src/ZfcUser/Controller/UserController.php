@@ -256,7 +256,9 @@ class UserController extends AbstractActionController
         }
 
         $form = $this->getChangePasswordForm();
-        $prg = $this->prg(static::ROUTE_CHANGEPASSWD, ['lang' => $this->lang()]);
+//         $prg = $this->prg(static::ROUTE_CHANGEPASSWD, ['lang' => $this->lang()]);
+        $redirectUrl = $this->url()->fromRoute(static::ROUTE_CHANGEPASSWD, ['lang' => $this->lang()]);
+        $prg = $this->prg($redirectUrl, true);
 
         $fm = $this->flashMessenger()->setNamespace('change-password')->getMessages();
         if (isset($fm[0])) {
@@ -312,8 +314,9 @@ class UserController extends AbstractActionController
         } else {
             $status = null;
         }
-
-        $prg = $this->prg(static::ROUTE_CHANGEEMAIL, ['lang' => $this->lang()]);
+//         $prg = $this->prg(static::ROUTE_CHANGEEMAIL, ['lang' => $this->lang()]);
+        $redirectUrl = $this->url()->fromRoute(static::ROUTE_CHANGEEMAIL, ['lang' => $this->lang()]);
+        $prg = $this->prg($redirectUrl, true);
         if ($prg instanceof Response) {
             return $prg;
         } elseif ($prg === false) {
@@ -322,7 +325,6 @@ class UserController extends AbstractActionController
                 'changeEmailForm' => $form,
             );
         }
-
         $form->setData($prg);
 
         if (!$form->isValid()) {
