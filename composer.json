@@ -25,11 +25,11 @@
         }
     },
     "require": {
-        "php": "^5.3.3|~7.0",
+        "php": ">5.6",
         "zendframework/zend-authentication": "~2.1",
         "zendframework/zend-crypt": "~2.1",
         "zendframework/zend-form": "~2.1",
-        "zendframework/zend-inputfilter": "~2.1",
+        "zendframework/zend-inputfilter": "~2.8.*",
         "zendframework/zend-loader": "~2.1",
         "zendframework/zend-modulemanager": "~2.1",
         "zendframework/zend-mvc": "~2.1",
